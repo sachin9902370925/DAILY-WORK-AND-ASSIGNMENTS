@@ -1,0 +1,47 @@
+
+
+QUESTION:creating one to many relation between 2 classes?
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+
+namespace CodeFirstApproach.Models
+{
+    [Table("Project")]
+    public class Project
+    {
+        [Key,DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
+       
+        public string project_Name { get; set; }
+        public string Type { get; set; }
+        public decimal project_Budget { get; set; }
+        public virtual ICollection<Member> Members { get; set; }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+
+namespace CodeFirstApproach.Models
+{
+    [Table("Member")]
+    public class Member
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MemberID { get; set; }
+        [Required]
+        public string member_Name { get; set; }
+        public string member_PhNo { get; set; }
+        [Required]
+        public double Salary { get; set; }
+        public Project Project_Allocated_To { get; set; }
+    }
+}

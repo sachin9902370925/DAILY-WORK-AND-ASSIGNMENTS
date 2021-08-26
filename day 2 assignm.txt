@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ConsoleApp2.models
+{
+    [Table("team members")]
+    public class team members
+    {
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int empid { get; set; }
+
+        public string empname{ get; set; }
+
+        public string company_name { get; set; }
+
+        public int Age { get; set; }
+
+        public hired from { get; set; } //FK
+    }
+}
